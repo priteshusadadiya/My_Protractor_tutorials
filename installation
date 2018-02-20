@@ -1,1 +1,137 @@
-Test of first file
+# End to End Testing using protector in Angular Applications.
+
+This is first tutorial in a entire series of End2End Testing using protractor framework.
+
+<center>
+![PROTRACTOR FRAMEWORK.jpg](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518633638/wkpmijpvmxsk9f3aqkli.jpg)
+</center>
+
+Automation testing on the Angular based application also can be done  using selenium web-driver but protractor framework lets us directly interact angular elements that why it is more advisable to write tests on protractor.
+ 
+#### What you Learn?
+____________________________________________________________
+
+you will learn following points in this tutorial.
+
+- What is Protractor ? and why should we use it to test angular based application ?
+- Tools that are compatible with protractor 
+- How to setup your systems environment to run Protractor tests.
+- How to fix any error which can occur during setting up the environment.
+- Various command that you will need for execution , management , error solving , configure the protractor tests.
+ 
+#### Requirements
+_____________________________________________________
+
+below listed tools and frameworks you will need to install in order to run the protractor tests
+
+- Node.js  - download the version based on the compatibility of your system from here [nodejs.org](https://nodejs.org/en/download/) 
+- Java development kit - download the version based on the compability of your system from here [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
+- Editor - any editor will do. we will be using the Eclipse for our tutorials but you can also use Notepad++ , Eclipse , Webstorm , Sublime etc...
+
+#### Difficulty
+____________________________________________________________
+- Basic 
+
+#### Tutorial Contents
+_____________________________________________________________
+
+__**What is Protractor ? and why should we use it to test angular based application ?**__
+
+Protractor is an end-to-end test framework build on Node.js program that supports the **Jasmine** and **Mocha**  test frameworks for Angular and AngularJS applications.
+
+Protractor uses the Jasmine test framework for its testing interface so all the codes we will be writing will be in Jasmine.Jasmine will allow us to write unit and functional tests for our angular application.
+
+protractor framework lets us directly interact angular specific locators, which allow us to test Angular-specific elements and run unit and End2End Tests
+
+**Running Test :**
+
+I have mentioned to install JDK because Protractor uses a standalone Selenium Server which is written in Java . we will be using selenium standalone server to interact with browsers.
+
+__**Tools that are compatible with protractor :**__
+
+protractor combines the tools and technologies such as NodeJS, Selenium, webDriver, Jasmine, Cucumber and Mocha.
+
+__**How to setup your systems environment to run Protractor tests :**__
+
+1. First you will have to install JDK and set up the java environment.
+2. Then add below command in your command prompt which will install Protractor globally using Node Package Manager (npm)
+
+> npm install -g protractor
+
+<center>
+![1.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630184/x2xmdrfv0nivhiq9pani.png)
+</center>
+
+This will install two command line tools, protractor and webdriver-manager. After it is installed then run  __**protractor --version**__ command to make sure it's working.
+<center>
+![2.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630266/fsnkrs2ioolcspli6zc5.png)
+</center>
+
+If you need any help regrading anything then enter __**protractor --help**__ command and it will list down all the options which you can use with protractor
+
+<center>
+![3.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630312/n9ewclpgmcaql8llgkd2.png)
+</center>
+
+The __**webdriver-manager**__  is a helper tool to easily get an instance of a Selenium Server running. Use it to download the necessary binaries __**webdriver-manager update**__
+
+<center>
+![4.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630371/te72misqikpkfvizyocu.png)
+</center>
+
+Now lets run  __**webdriver-manager version**__  and make sure it's working.
+
+<center>
+![5.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630406/m24zvh8iafrsz6cfioa7.png)
+</center>
+
+If you need any help regrading anything then enter __**webdriver-manager help**__ command and it will list down all the options which you can use with webdriver-manager
+
+<center>
+![6.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630436/i6mlstehwxdt6wohitob.png)
+</center>
+
+use __**webdriver-manager status**__  to see we have all the browser drivers that we need to run our test on particular browser.
+
+<center>
+![6_1.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630472/lo8tqtveh57u6dcxvxdw.png)
+</center>
+
+if something is **missing** then run __**webdriver-manager clean**__ command  and it will clean out all the browser drivers and then you can use  __**webdriver-manager update**__ and add fresh copy of drivers.
+
+<center>
+![7.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630526/rh4dbi2y7tirfwgf9n66.png)
+</center>
+
+Now that you have followed all the steps and installed everything lets start up a server.
+__**webdriver-manager start**__ fire this  command to start the server.
+
+If __**webdriver-manager start**__ does not work, and if you see error like below then try to clear out the saved files with __**webdriver-manager clean**__ and installs this files again.
+
+<center>
+![8.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630622/xthsrb7a1jx0sskquzfk.png)
+</center>
+
+Now you will have a started up a Selenium Server and will see some output like some logs and at the end you will see __**"Selenium server is up and running"**__ this means we have successfully started the serve and ready for our tests.
+
+<center>
+![9.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630723/lhrqpyafqvliltvtw8jo.png)
+</center>
+
+Your Protractor test will send requests to this server to control a local browser. 
+Important note :  Server should be running while we run our tests , that means every time you want to run protractor tests then you have to start and leave this server running. 
+
+Now lets go to our browser and add this URL  __**http://localhost:4444/wd/hub**__ .
+ You can see information about the status of our server.
+
+<center>
+![10.PNG](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518630839/r02pka2fz5qiewllmiup.png)
+</center>
+
+There is a another command for shutting down the server __**shutdown webdriver-manager shutdown**__ but according to official documents " stopping is not yet supported on standalone server 3.x.x." 
+
+ so you will have to close the command prompt in order to shutdown the server.
+
+So ,that was all it about how to set up and run your protractor test. In next tutorial i will be discribing how you can configure Eclipse to run Protractor test directly from your browser.
+
+
